@@ -7,6 +7,7 @@ public class UserMenu {
 
     public void ui() {
     systemDisplayText();
+    ConsoleOperators.pressAnythingToContinue();
     while(true) { userUI(); }
     }
 
