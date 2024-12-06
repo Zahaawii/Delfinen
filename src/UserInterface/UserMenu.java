@@ -1,40 +1,50 @@
 package UserInterface;
+import Quota.CashierUI;
+import members.ManagementUI;
+import Swimmers.TrænerUI;
+import members.MembersList;
+
 import java.util.Scanner;
 
 public class UserMenu {
 
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
-    public void ui() {
+    public static void ui() {
     systemDisplayText();
     while(true) { userUI(); }
     }
 
-    private void userUI() {
+    private static void userUI() {
         showcaseMenu();
         int userInput = userChoice();
 
         if(userInput == 1) {
-            System.out.println("Opret medlemmer");
+            System.out.println("You choose management");
             ConsoleOperators.pressAnythingToContinue();
+            ManagementUI.managementUI();
         }
 
         if(userInput == 2) {
             System.out.println("Kontingenter");
             ConsoleOperators.pressAnythingToContinue();
+            CashierUI.cashierUI();
         }
 
         if(userInput == 3) {
             System.out.println("Svømmere");
             ConsoleOperators.pressAnythingToContinue();
+            MembersList membersList = new MembersList(); // Assuming you have a way to initialize this
+            TrænerUI trænerUI = new TrænerUI(membersList);
+            trænerUI.showMenu();
         }
     }
 
-    private void systemDisplayText() {
+    private static void systemDisplayText() {
         ConsoleOperators.displayInfo("Welcome to the Dolphin");
     }
 
-    private int userChoice() {
+    private static int userChoice() {
         int userChoice;
 
         do{
@@ -49,11 +59,11 @@ public class UserMenu {
         return userChoice;
     }
 
-    private void showcaseMenu() {
+    private static void showcaseMenu() {
         System.out.println("Dolphin menu");
-        ConsoleOperators.displayInfo("Press 1 to create members " +
-                "\nPress 2 to see Payments" +
-                "\nPress 3 to see swimmers");
+        ConsoleOperators.displayInfo("Press 1 if you're Management " +
+                "\nPress 2 to if you're Cashier" +
+                "\nPress 3 to see Coach");
 
     }
 }
