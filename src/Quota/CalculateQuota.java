@@ -56,16 +56,18 @@ public class CalculateQuota {
         return restanceList;
     }
 
-    public static void printRestanceList(){
+    public static ArrayList<Members> printRestanceList(){
         for (Members m : getRestanceList()){
             System.out.println("Mangler at betale " + m.getQuota() + "kr.: " + m);
         }
+        return getRestanceList();
     }
 
-    public static void printQuotaList(){
+    public static ArrayList<Members> printQuotaList(){
         for (Members m : calculateQuota()){
-            System.out.println(m.getName() + " " + m.getLastname() + "\n Kontingent " + m.getQuota());
+            System.out.println(m.getName() + " " + m.getLastname() + "\nKontingent " + m.getQuota());
         }
+        return calculateQuota();
     }
 
 }

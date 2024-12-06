@@ -81,7 +81,7 @@ public class Members {
     @Override
     public String toString() {
         return "ID: " + id + " Name: " + name + " Lastname: " + lastname + " Age: " + age +
-                "\nActive status: " + isActive  + " Quota payed: " + quotaPayed;
+                "\nActive status: " + isActive  + "\nQuota payed: " + quotaPayed;
     }
 
 

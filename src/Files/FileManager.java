@@ -48,7 +48,7 @@ public class FileManager {
 
     public static void saveQuota() {
         try (PrintWriter pw = new PrintWriter(new FileWriter("Quota.txt"), true)){
-            CalculateQuota.printQuotaList();
+            pw.println(CalculateQuota.printQuotaList());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,10 +56,11 @@ public class FileManager {
 
     public static void saveRestance() {
         try (PrintWriter pw = new PrintWriter(new FileWriter("Restance.txt"), true)){
-            CalculateQuota.printRestanceList();
+            pw.println(CalculateQuota.printRestanceList());
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }
 
