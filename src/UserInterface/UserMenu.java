@@ -1,7 +1,7 @@
 package UserInterface;
 import Quota.CashierUI;
 import members.ManagementUI;
-import Swimmers.TrænerUI;
+import Swimmers.CoachUI;
 import members.MembersList;
 
 import java.util.Scanner;
@@ -34,9 +34,7 @@ public class UserMenu {
         if(userInput == 3) {
             System.out.println("Svømmere");
             ConsoleOperators.pressAnythingToContinue();
-            MembersList membersList = new MembersList(); // Assuming you have a way to initialize this
-            TrænerUI trænerUI = new TrænerUI(membersList);
-            trænerUI.showMenu();
+            CoachUI.coachUI();
         }
     }
 
