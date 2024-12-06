@@ -44,6 +44,7 @@ public class ManagementUI {
     //Instantiate a new member
     private static void createMember() {
 
+        ConsoleOperators.printSeperator(30);
         System.out.println("Enter member name");
         String name = scanner.next();
         ConsoleOperators.printSeperator(30);
@@ -53,7 +54,16 @@ public class ManagementUI {
         ConsoleOperators.printSeperator(30);
 
         System.out.println("Enter member age");
-        int age = scanner.nextInt();
+        int age;
+
+        do {
+            try {
+                age = Integer.parseInt(scanner.next());
+            } catch (Exception e) {
+                System.out.println("Wrong input, enter a age between 0-99");
+                age = 0;
+            }
+        } while (age > 0);
         ConsoleOperators.printSeperator(30);
 
         System.out.println("Is the user active? \nPress 'Y' for yes");
@@ -68,6 +78,7 @@ public class ManagementUI {
 
         System.out.println("Is the swimmer competitve? \nPress 'Y' for yes");
         String userCompetitive = scanner.next();
+        ConsoleOperators.printSeperator(30);
 
         if(userCompetitive.equalsIgnoreCase("Y")) {
             isCompetitive = true;
@@ -79,7 +90,7 @@ public class ManagementUI {
 //        String disciplin = scanner.next();
 
         System.out.println("Has the user payed quota? Press 'Y' for yes");
-        String payed = scanner.nextLine();
+        String payed = scanner.next();
         ConsoleOperators.printSeperator(30);
 
         if(payed.equalsIgnoreCase("Y")) {
@@ -89,7 +100,6 @@ public class ManagementUI {
         Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);
         ConsoleOperators.printSeperator(30);
         System.out.println("Member created: " + m1.toString());
-        ConsoleOperators.printSeperator(30);
 
         FileManager.fileOperations();
 

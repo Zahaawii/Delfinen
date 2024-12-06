@@ -1,2 +1,3 @@
-ID: 1 Name: Zahaa Lastname: Alkhaani Age: 25
-Active status: true Quota payed: false
+ID: 1 Name: k Lastname: k Age: 0
+Active status: false
+Quota payed: false
