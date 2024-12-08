@@ -62,8 +62,8 @@ public class UserMenu {
     private static void showcaseMenu() {
         System.out.println("Dolphin menu");
         ConsoleOperators.displayInfo("Press 1 if you're Management " +
-                "\nPress 2 to if you're Cashier" +
-                "\nPress 3 to see Coach");
+                "\nPress 2 if you're Cashier" +
+                "\nPress 3 if you're Coach");
 
     }
 }
