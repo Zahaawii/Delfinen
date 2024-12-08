@@ -60,10 +60,11 @@ public class ManagementUI {
             try {
                 age = Integer.parseInt(scanner.next());
             } catch (Exception e) {
-                System.out.println("Wrong input, enter a age between 0-99");
+                System.out.println("Wrong input, enter a age between 1-99");
                 age = 0;
             }
-        } while (age > 0);
+        } while (age < 1 || age > 100);
+
         ConsoleOperators.printSeperator(30);
 
         System.out.println("Is the user active? \nPress 'Y' for yes");
@@ -91,7 +92,6 @@ public class ManagementUI {
 
         System.out.println("Has the user payed quota? Press 'Y' for yes");
         String payed = scanner.next();
-        ConsoleOperators.printSeperator(30);
 
         if(payed.equalsIgnoreCase("Y")) {
             quotaPayed = true;
@@ -122,6 +122,7 @@ public class ManagementUI {
             if(deleteMemberChoice.equalsIgnoreCase("Y")) {
                 MembersList.removeMember(userDelete);
                 System.out.println("User deleted");
+                ConsoleOperators.printSeperator(30);
             } else {
                 System.out.println("Member not deleted");
             }
@@ -150,7 +151,7 @@ public class ManagementUI {
                 System.out.println("Tast mellem 1-3");
                 userInput = 0;
             }
-        } while (userInput < 0  || userInput > 3);
+        } while (userInput < 1  || userInput > 3);
         return userInput;
     }
 
