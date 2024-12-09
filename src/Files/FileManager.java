@@ -21,31 +21,6 @@ public class FileManager {
         }
     }
 
-    /**
-     *
-     * AI kode til at gemme Top liste til træner
-     * går den igennem og laver om efter weekend!
-     *
-     */
-    public static void saveTopList(List<Members> top5Swimmers, String category) {
-        String fileName = "Top5" + category + ".txt";
-        try (FileWriter writer = new FileWriter(fileName)) {
-            for (Members swimmer : top5Swimmers) {
-                if (swimmer instanceof CompetitionSwimmer) {
-                    writer.write(swimmer.getName() + " " + swimmer.getLastname() + " - " + ((CompetitionSwimmer) swimmer).getTime() + "\n");
-                }
-            }
-            System.out.println("Listen er gemt i " + fileName);
-        } catch (IOException e) {
-            System.out.println("Der opstod en fejl under gemning af listen: " + e.getMessage());
-        }
-    }
-
-    /**
-     * AI Slutter her *
-     */
-
-
     public static void saveQuota() {
         try (PrintWriter pw = new PrintWriter(new FileWriter("Quota.txt"), true)){
             pw.println(CalculateQuota.printQuotaList());
