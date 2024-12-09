@@ -95,6 +95,8 @@ public class ManagementUI {
 
         if(payed.equalsIgnoreCase("Y")) {
             quotaPayed = true;
+        } else {
+            quotaPayed = false;
         }
 
         Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);

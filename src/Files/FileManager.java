@@ -1,5 +1,6 @@
 package Files;
 import Quota.CalculateQuota;
+import UserInterface.ConsoleOperators;
 import members.CompetitionSwimmer;
 import members.Members;
 import members.MembersList;
@@ -10,12 +11,14 @@ import java.util.List;
 public class FileManager {
 
     public static void fileOperations(){
-        try (PrintWriter pw = new PrintWriter(new FileWriter("Members.txt"), true)){
-
+        try {
+            BufferedWriter pw = new BufferedWriter(new FileWriter("Members.txt", true));
             for(Members m1 : MembersList.getMemberList()) {
-            pw.println(m1);
-            }
+            pw.write(String.valueOf(m1));
 
+            pw.newLine();
+            }
+            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,17 +50,31 @@ public class FileManager {
 
 
     public static void saveQuota() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter("Quota.txt"), true)){
-            pw.println(CalculateQuota.printQuotaList());
+        try {
+            BufferedWriter pw = new BufferedWriter(new FileWriter("Quota.txt", true));
+            for(Members m1 : CalculateQuota.getQuotaList()) {
+                pw.write(m1.getName() + " " + m1.getLastname() + "\nKontingent " + m1.getQuota());
+
+            }
+            pw.newLine();
+            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void saveRestance() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter("Restance.txt"), true)){
-            pw.println(CalculateQuota.printRestanceList());
-        } catch (IOException e) {
+        try {
+            BufferedWriter pw = new BufferedWriter(new FileWriter("Restance.txt", true));
+//            pw.write(String.valueOf(CalculateQuota.printRestanceList()));
+            for(Members m1 : CalculateQuota.getRestanceList()) {
+                pw.write("Mangler at betale " + m1.getQuota() + "kr.: " + m1);
+                pw.write(System.lineSeparator());
+            }
+            pw.newLine();
+            pw.close();
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

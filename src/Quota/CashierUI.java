@@ -18,7 +18,7 @@ public class CashierUI {
                 System.out.println("Tast mellem 1-3");
                 userInput = 0;
             }
-        } while (userInput < 0  || userInput > 3);
+        } while (userInput < 1  || userInput > 3);
         return userInput;
     }
 
@@ -27,6 +27,7 @@ public class CashierUI {
 
         System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
                 "Tast 2 for at se medlemmer i restance");
+        ConsoleOperators.printSeperator(30);
 
         int userInput = cashierInput();
 
@@ -35,6 +36,7 @@ public class CashierUI {
             ConsoleOperators.pressAnythingToContinue();
             FileManager.saveQuota();
             System.out.println("Filen er gemt som Quota.txt");
+            ConsoleOperators.printSeperator(30);
         }
 
         if (userInput == 2){
@@ -42,6 +44,7 @@ public class CashierUI {
             ConsoleOperators.pressAnythingToContinue();
             FileManager.saveRestance();
             System.out.println("Filen er gemt som Restance.txt");
+            ConsoleOperators.printSeperator(30);
         }
     }
 }

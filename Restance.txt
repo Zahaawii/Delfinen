@@ -1,2 +1,0 @@
-[ID: 1 Name: Zahaa Lastname: Alkhaani Age: 25
-Active status: true Quota payed: false]
