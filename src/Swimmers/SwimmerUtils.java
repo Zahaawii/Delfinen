@@ -10,14 +10,7 @@ import java.util.stream.Collectors;
 
 public class SwimmerUtils {
 
-    /**
-     *
-     * Mr.CoPilot's magiske block
-     * kigge bedre på:
-     *.filter, .sorted, .collect => forstå logik
-     *  så skrive hele texten om.
-     */
-
+    
     public static List<Members> filterAndSortSwimmers(List<Members> members, String discipline, String category) {
         return members.stream()
                 .filter(member -> {
