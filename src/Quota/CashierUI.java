@@ -18,30 +18,40 @@ public class CashierUI {
                 System.out.println("Tast mellem 1-3");
                 userInput = 0;
             }
-        } while (userInput < 0  || userInput > 3);
+        } while (userInput < 0  || userInput > 3 && userInput != 9);
         return userInput;
     }
 
     public static void cashierUI(){
-        ConsoleOperators.displayInfo("Welcome to the Cashier menu");
+        while (true) {
+            ConsoleOperators.displayInfo("Welcome to the Cashier menu");
 
-        System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
-                "Tast 2 for at se medlemmer i restance");
+            System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
+                    "Tast 2 for at se medlemmer i restance \n" +
+                    "Tast 9 for at \033[31mgå tilbage til hovedmenu\033[0m");
+            ConsoleOperators.printSeperator(30);
 
-        int userInput = cashierInput();
+            int userInput = cashierInput();
 
-        if (userInput == 1){
-            System.out.println("Se kontingent");
-            ConsoleOperators.pressAnythingToContinue();
-            FileManager.saveQuota();
-            System.out.println("Filen er gemt som Quota.txt");
-        }
+            if (userInput == 1){
+                System.out.println("Se kontingent");
+               if (!ConsoleOperators.pressAnythingToContinue()) {
+                   continue;
+               }
+                FileManager.saveQuota();
+                System.out.println("Filen er gemt som Quota.txt");
+            }
 
-        if (userInput == 2){
-            System.out.println("Se restance");
-            ConsoleOperators.pressAnythingToContinue();
-            FileManager.saveRestance();
-            System.out.println("Filen er gemt som Restance.txt");
+            else if (userInput == 2){
+                System.out.println("Se restance");
+                if (!ConsoleOperators.pressAnythingToContinue()) {
+                    continue;
+                }
+                FileManager.saveRestance();
+                System.out.println("Filen er gemt som Restance.txt");
+            } else if (userInput == 9) {
+                return; //go back to Usermenu
+            }
         }
     }
 }

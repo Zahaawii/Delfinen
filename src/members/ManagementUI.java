@@ -14,30 +14,35 @@ public class ManagementUI {
 
     //User interface for the management to create, see or delete a member
     public static void managementUI() {
+        while (true) {
+            ConsoleOperators.displayInfo("Welcome to the Management menu");
 
-        ConsoleOperators.displayInfo("Welcome to the Management menu");
+            System.out.println("Press 1 to create a member \nPress 2 to see all members \nPress 3 to delete all members \nPress 9 to \033[31mgo back to main menu\033[0m");
+            ConsoleOperators.printSeperator(30);
 
-        System.out.println("Press 1 to create a member \nPress 2 to see all members \nPress 3 to delete all members");
-        ConsoleOperators.printSeperator(30);
+            int userInput = managementInput();
 
-        int userInput = managementInput();
-
-        if(userInput == 1) {
-            System.out.println("Create a member");
-            ConsoleOperators.pressAnythingToContinue();
-            createMember();
-        }
-
-        if(userInput == 2) {
-            System.out.println("See all members");
-            ConsoleOperators.pressAnythingToContinue();
-            seeAllMember();
-        }
-
-        if(userInput == 3) {
-            System.out.println("Delete a member");
-            ConsoleOperators.pressAnythingToContinue();
-            deleteMember();
+            if (userInput == 1) {
+                System.out.println("Create a member");
+                if (!ConsoleOperators.pressAnythingToContinue()) {
+                    continue;
+                }
+                createMember();
+            } else if (userInput == 2) {
+                System.out.println("See all members");
+                if (!ConsoleOperators.pressAnythingToContinue()) {
+                    continue;
+                }
+                seeAllMember();
+            } else if (userInput == 3) {
+                System.out.println("Delete a member");
+                if (!ConsoleOperators.pressAnythingToContinue()) {
+                    continue;
+                }
+                deleteMember();
+            } else if (userInput == 9) {
+                return; // Go back to UserMenu
+            }
         }
     }
 
@@ -150,7 +155,7 @@ public class ManagementUI {
                 System.out.println("Tast mellem 1-3");
                 userInput = 0;
             }
-        } while (userInput < 0  || userInput > 3);
+        } while (userInput < 0  || userInput > 3 && userInput != 9);
         return userInput;
     }
 

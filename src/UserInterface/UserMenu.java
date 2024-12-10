@@ -4,6 +4,7 @@ import members.ManagementUI;
 import Swimmers.CoachUI;
 import members.MembersList;
 
+import java.text.BreakIterator;
 import java.util.Scanner;
 
 public class UserMenu {
@@ -21,19 +22,25 @@ public class UserMenu {
 
         if(userInput == 1) {
             System.out.println("You choose management");
-            ConsoleOperators.pressAnythingToContinue();
+            if (!ConsoleOperators.pressAnythingToContinue()){
+                return;
+            }
             ManagementUI.managementUI();
         }
 
         if(userInput == 2) {
             System.out.println("Kontingenter");
-            ConsoleOperators.pressAnythingToContinue();
+           if (!ConsoleOperators.pressAnythingToContinue()) {
+               return;
+           }
             CashierUI.cashierUI();
         }
 
         if(userInput == 3) {
             System.out.println("Svømmere");
-            ConsoleOperators.pressAnythingToContinue();
+            if (!ConsoleOperators.pressAnythingToContinue()){
+                return;
+            }
             CoachUI.coachUI();
         }
     }
@@ -49,9 +56,13 @@ public class UserMenu {
           try {
              userChoice = Integer.parseInt(scanner.nextLine());
           }   catch (Exception e) {
-              System.out.println("You have to enter a number between 1-3");
               userChoice = 0;
           }
+            if (userChoice < 1 || (userChoice > 3 && userChoice != 9)) {
+                ConsoleOperators.printSeperator(30);
+                System.out.println("You have to enter a number between 1-3");
+                ConsoleOperators.printSeperator(30);
+            }
         } while (userChoice < 0 || userChoice > 3);
 
         return userChoice;
