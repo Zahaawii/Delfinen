@@ -18,12 +18,13 @@ public class CashierUI {
                 System.out.println("Tast mellem 1-3");
                 userInput = 0;
             }
-        } while (userInput < 0  || userInput > 3 && userInput != 9);
+        } while (userInput < 1  || userInput > 3 && userInput != 9);
         return userInput;
     }
 
     public static void cashierUI(){
-        while (true) {
+        boolean exit = false;
+        while (!exit) {
             ConsoleOperators.displayInfo("Welcome to the Cashier menu");
 
             System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
@@ -50,7 +51,7 @@ public class CashierUI {
                 FileManager.saveRestance();
                 System.out.println("Filen er gemt som Restance.txt");
             } else if (userInput == 9) {
-                return; //go back to Usermenu
+                exit = true; //go back to Usermenu
             }
         }
     }

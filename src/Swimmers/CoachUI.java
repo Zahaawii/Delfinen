@@ -33,8 +33,9 @@ public class CoachUI {
     // TrænerMenu
     public void showMenu() {
         int choice;
+        boolean exit = false;
 
-        while (true) {
+        while (!exit) {
             System.out.println("------------------------------" + "\n\tTræner Menu");
 
             ConsoleOperators.displayInfo("\tVælg disciplin:\n" +
@@ -67,8 +68,8 @@ public class CoachUI {
                     chooseDisciplin("Brystsvømning");
                     break;
                 case 9:
-                    UserMenu.ui();
-                    return;
+                    exit = true;
+                    break;
                 default:
                     System.out.println("Forkert input, Prøv igen!");
             }
@@ -78,8 +79,9 @@ public class CoachUI {
     //DisciplinMenu med valg af Junior eller Senior
     private void chooseDisciplin(String disciplin) {
         int choice;
+        boolean exit = false;
 
-        while (true) {
+        while (!exit) {
             ConsoleOperators.displayInfo("\tVælg kategori: \n" +
                     "\n'1' Top 5 Junior svømmere \n'2' Top 5 Senior svømmere" +
                     "\n'9'" + RED_TEXT + " Tilbage til valg af disciplin" + RESET_TEXT);
@@ -98,7 +100,8 @@ public class CoachUI {
                     handleTop5Swimmers(disciplin, "Senior");
                     break;
                 case 9:
-                    return; // go back to disciplin valg
+                    exit = true;
+                    break;
                 default:
                     System.out.println("Forkert input, Prøv igen!");
             }

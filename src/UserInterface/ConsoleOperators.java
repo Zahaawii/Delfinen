@@ -21,9 +21,9 @@ public class ConsoleOperators {
 
     public static boolean pressAnythingToContinue() {
      System.out.println("Press anything to continue, " + RED_ITALIC_TEXT + "'9' to go back" + RESET_TEXT + ".");
-    String input = scanner.nextLine();
+     String input = scanner.nextLine();
      clearConsole();
-     return !input.equals("9");
+     return !input.equals("9"); //kør ovenover hvis ikke '9'
     }
 
     public static void clearConsole() {
