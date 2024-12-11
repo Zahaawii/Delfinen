@@ -2,6 +2,7 @@ package members;
 import Files.FileManager;
 import UserInterface.ConsoleOperators;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class ManagementUI {
@@ -43,7 +44,6 @@ public class ManagementUI {
 
     //Instantiate a new member
     private static void createMember() {
-
         ConsoleOperators.printSeperator(30);
         System.out.println("Enter member name");
         String name = scanner.next();
@@ -87,9 +87,6 @@ public class ManagementUI {
             isCompetitive = false;
         }
 
-//        System.out.println("Add user disciplin");
-//        String disciplin = scanner.next();
-
         System.out.println("Has the user payed quota? Press 'Y' for yes");
         String payed = scanner.next();
 
@@ -99,11 +96,22 @@ public class ManagementUI {
             quotaPayed = false;
         }
 
-        Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);
         ConsoleOperators.printSeperator(30);
-        System.out.println("Member created: " + m1.toString());
+        System.out.println("Is the swimmer a competition swimmer:" + "\nPress 'Y' for yes");
+        String userSwimmer = scanner.next();
 
-        FileManager.fileOperations();
+
+        if(userSwimmer.equalsIgnoreCase("Y")) {
+            System.out.println("Enter the swimmers discipline");
+            String discipline = scanner.next();
+            System.out.println("If the user has a swimming time, enter the time or 0");
+            double time = scanner.nextDouble();
+            isCompetitionSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
+
+        } else {
+            isSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed);
+        }
+
 
     }
 
@@ -155,6 +163,25 @@ public class ManagementUI {
             }
         } while (userInput < 1  || userInput > 3);
         return userInput;
+    }
+
+    private static void isCompetitionSwimmer(String name, String lastname, int age, boolean isActive, boolean isCompetitive, boolean quotaPayed, String discipline, double time) {
+
+        CompetitionSwimmer c1 = new CompetitionSwimmer(id++, name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
+        ConsoleOperators.printSeperator(30);
+        System.out.println("Member created: " + c1.toString());
+
+        FileManager.fileOperations();
+    }
+
+    private static void isSwimmer(String name, String lastname, int age, boolean isActive, boolean isCompetitive, boolean quotaPayed) {
+
+        Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);
+        ConsoleOperators.printSeperator(30);
+        System.out.println("Member created: " + m1.toString());
+
+        FileManager.fileOperations();
+
     }
 
 }
