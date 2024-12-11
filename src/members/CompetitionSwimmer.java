@@ -66,7 +66,7 @@ public class CompetitionSwimmer extends Members{
 
     @Override
     public String toString() {
-        return super.toString() + " Discipline: " + discipline;
+        return super.toString() + " \nDiscipline: " + discipline;
     }
 }
 

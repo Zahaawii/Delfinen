@@ -104,8 +104,7 @@ public class ManagementUI {
         if(userSwimmer.equalsIgnoreCase("Y")) {
             System.out.println("Enter the swimmers discipline");
             String discipline = scanner.next();
-            System.out.println("If the user has a swimming time, enter the time or 0");
-            double time = scanner.nextDouble();
+            double time = 0;
             isCompetitionSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
 
         } else {

@@ -82,3 +82,6 @@ Quota payed: true
 ID: 1 Name: Zahaa Lastname: k Age: 25
 Active status: false
 Quota payed: false
+ID: 1 Name: zAHAA Lastname: KK Age: 26
+Active status: false
+Quota payed: false Discipline: k
