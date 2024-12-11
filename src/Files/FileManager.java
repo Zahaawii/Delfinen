@@ -10,6 +10,7 @@ import java.util.List;
 
 public class FileManager {
 
+    //Method to save all new users to a file members.txt
     public static void fileOperations(){
         try {
             BufferedWriter pw = new BufferedWriter(new FileWriter("Members.txt", true));
@@ -48,7 +49,7 @@ public class FileManager {
      * AI Slutter her *
      */
 
-
+    //Method to save all quotas to a text file named quota.txt
     public static void saveQuota() {
         try {
             BufferedWriter pw = new BufferedWriter(new FileWriter("Quota.txt", true));
@@ -63,6 +64,7 @@ public class FileManager {
         }
     }
 
+    //Method to save all restance payments to a text file named restance.txt
     public static void saveRestance() {
         try {
             BufferedWriter pw = new BufferedWriter(new FileWriter("Restance.txt", true));

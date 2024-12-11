@@ -77,16 +77,6 @@ public class ManagementUI {
             isActive = false;
         }
 
-        System.out.println("Is the swimmer competitve? \nPress 'Y' for yes");
-        String userCompetitive = scanner.next();
-        ConsoleOperators.printSeperator(30);
-
-        if(userCompetitive.equalsIgnoreCase("Y")) {
-            isCompetitive = true;
-        } else {
-            isCompetitive = false;
-        }
-
         System.out.println("Has the user payed quota? Press 'Y' for yes");
         String payed = scanner.next();
 
@@ -102,6 +92,7 @@ public class ManagementUI {
 
 
         if(userSwimmer.equalsIgnoreCase("Y")) {
+            isCompetitive = true;
             System.out.println("Enter the swimmers discipline");
             String discipline = scanner.next();
             double time = 0;

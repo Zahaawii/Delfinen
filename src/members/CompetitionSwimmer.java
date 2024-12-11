@@ -2,6 +2,7 @@ package members;
 
 import java.util.ArrayList;
 
+//Blueprint on what a competitionswimmer needs to be a competition swimmer
 public class CompetitionSwimmer extends Members{
 
     private double time;

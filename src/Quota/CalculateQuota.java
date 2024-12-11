@@ -10,7 +10,7 @@ public class CalculateQuota {
     private static final double juniorPrice = 1000;
     private static final double seniorPrice = 1600;
 
-
+    //Method to calculate what price the member has to pay for their membership
     public static ArrayList<Members> calculateQuota(){
         ArrayList<Members> calculatedQuotaList = MembersList.getMemberList();
 
@@ -39,11 +39,13 @@ public class CalculateQuota {
         return calculatedQuotaList;
     }
 
+    //Method to get all the data in the arraylist and display it
     public static ArrayList<Members> getQuotaList(){
         ArrayList<Members> h1 = calculateQuota();
         return h1;
     }
 
+    //Method to get all the information on restance payments and add it to the list.
     public static ArrayList<Members> getRestanceList(){
         ArrayList<Members> restanceList = new ArrayList<>();
 
@@ -56,6 +58,7 @@ public class CalculateQuota {
         return restanceList;
     }
 
+    //Method to display all outstanding restance payments
     public static ArrayList<Members> printRestanceList(){
         for (Members m : getRestanceList()){
             System.out.println("Mangler at betale " + m.getQuota() + "kr.: " + m);
@@ -63,6 +66,7 @@ public class CalculateQuota {
         return getRestanceList();
     }
 
+    //Method to display all quota payments.
     public static ArrayList<Members> printQuotaList(){
         for (Members m : calculateQuota()){
             System.out.println(m.getName() + " " + m.getLastname() + "\nKontingent " + m.getQuota());

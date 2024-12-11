@@ -2,3 +2,8 @@ Mangler at betale 1600.0kr.: ID: 3 Name: Daniel Lastname: Søgaard Age: 20
 Active status: true
 Quota payed: false
 
+
+Mangler at betale 1600.0kr.: ID: 3 Name: 11 Lastname: k Age: 22
+Active status: true
+Quota payed: false
+

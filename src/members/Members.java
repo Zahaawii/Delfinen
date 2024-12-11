@@ -1,5 +1,6 @@
 package members;
 
+//Blueprint on what our members need to be a member
 public class Members {
 
     private int id;

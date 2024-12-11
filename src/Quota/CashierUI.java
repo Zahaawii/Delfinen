@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class CashierUI {
     static Scanner scanner = new Scanner(System.in);
 
-    //Metode der tager input
+    //Error handling that makes the cashier only enter between 1 or 2 to go further.
     private static int cashierInput(){
         int userInput;
         do{
@@ -23,6 +23,7 @@ public class CashierUI {
         return userInput;
     }
 
+    // A user interface to display what options the cashier has
     public static void cashierUI(){
         ConsoleOperators.displayInfo("Welcome to the Cashier menu");
 
@@ -35,6 +36,7 @@ public class CashierUI {
         if (userInput == 1){
             System.out.println("Se kontingent");
             ConsoleOperators.pressAnythingToContinue();
+            CalculateQuota.printQuotaList();
             FileManager.saveQuota();
             System.out.println("Filen er gemt som Quota.txt");
             ConsoleOperators.printSeperator(30);
@@ -43,6 +45,7 @@ public class CashierUI {
         if (userInput == 2){
             System.out.println("Se restance");
             ConsoleOperators.pressAnythingToContinue();
+            CalculateQuota.printRestanceList();
             FileManager.saveRestance();
             System.out.println("Filen er gemt som Restance.txt");
             ConsoleOperators.printSeperator(30);
