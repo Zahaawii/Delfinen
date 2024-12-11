@@ -108,7 +108,7 @@ public class ManagementUI {
             isCompetitionSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
 
         } else {
-            isSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed);
+            isSwimmer(name, lastname, age, isActive, quotaPayed);
         }
 
 
@@ -164,6 +164,7 @@ public class ManagementUI {
         return userInput;
     }
 
+    //Instantiate a competition swimmer
     private static void isCompetitionSwimmer(String name, String lastname, int age, boolean isActive, boolean isCompetitive, boolean quotaPayed, String discipline, double time) {
 
         CompetitionSwimmer c1 = new CompetitionSwimmer(id++, name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
@@ -173,7 +174,8 @@ public class ManagementUI {
         FileManager.fileOperations();
     }
 
-    private static void isSwimmer(String name, String lastname, int age, boolean isActive, boolean isCompetitive, boolean quotaPayed) {
+    //Instantiate a regular member
+    private static void isSwimmer(String name, String lastname, int age, boolean isActive, boolean quotaPayed) {
 
         Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);
         ConsoleOperators.printSeperator(30);

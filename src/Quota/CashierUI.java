@@ -12,13 +12,14 @@ public class CashierUI {
     private static int cashierInput(){
         int userInput;
         do{
+            System.out.println("Enter a number between 1-2");
             try {
                 userInput = Integer.parseInt(scanner.next());
             } catch (Exception e) {
-                System.out.println("Tast mellem 1-3");
-                userInput = 0;
+                System.out.println("You have to enter a number between 1-2");
+                userInput = -1;
             }
-        } while (userInput < 1  || userInput > 3);
+        } while (userInput <= 0|| userInput > 3);
         return userInput;
     }
 
