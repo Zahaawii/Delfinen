@@ -1,2 +1,4 @@
-
+Mangler at betale 1600.0kr.: ID: 3 Name: Daniel Lastname: Søgaard Age: 20
+Active status: true
+Quota payed: false
 

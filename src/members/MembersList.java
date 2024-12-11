@@ -1,5 +1,7 @@
 package members;
 
+import UserInterface.ConsoleOperators;
+
 import java.util.ArrayList;
 
 public class MembersList {
@@ -30,6 +32,7 @@ public class MembersList {
     public static void seeList() {
         for(Members m : memberList) {
             System.out.println(m);
+            ConsoleOperators.printSeperator(30);
         }
     }
 }
