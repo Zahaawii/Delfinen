@@ -174,7 +174,6 @@ public class ManagementUI {
     private static void isCompetitionSwimmer(String name, String lastname, int age, boolean isActive, boolean isCompetitive, boolean quotaPayed, String discipline, double time) {
 
         CompetitionSwimmer c1 = new CompetitionSwimmer(id++, name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
-        MembersList.getMemberList().add(c1); // tilføjer ny medlem til MembersList
         ConsoleOperators.printSeperator(30);
         System.out.println("Member created: " + c1.toString());
 
