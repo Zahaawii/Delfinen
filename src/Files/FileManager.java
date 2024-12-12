@@ -27,8 +27,7 @@ public class FileManager {
         try {
             BufferedWriter pw = new BufferedWriter(new FileWriter("Quota.txt", true));
             for(Members m1 : CalculateQuota.getQuotaList()) {
-                pw.write(m1.getName() + " " + m1.getLastname() + "\nKontingent " + m1.getQuota());
-
+                pw.write(m1.getName() + " " + m1.getLastname() + " " + "\nKontingent " + m1.getQuota());
             }
             pw.newLine();
             pw.close();
@@ -44,7 +43,6 @@ public class FileManager {
 //            pw.write(String.valueOf(CalculateQuota.printRestanceList()));
             for(Members m1 : CalculateQuota.getRestanceList()) {
                 pw.write("Mangler at betale " + m1.getQuota() + "kr.: " + m1);
-                pw.write(System.lineSeparator());
             }
             pw.newLine();
             pw.close();

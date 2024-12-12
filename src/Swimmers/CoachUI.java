@@ -43,7 +43,13 @@ public class CoachUI {
                     "\n'9'" + RED_TEXT + " Tilbage til hovedmenu" + RESET_TEXT);
 
 
-            choice = sc.nextInt();
+            try {
+                choice = Integer.parseInt(sc.next());
+            } catch (NumberFormatException e) {
+                System.out.println("Indtast et nummer mellem 1-4 eller 9");
+                choice = -1;
+            }
+
             sc.nextLine(); //consume newline
 
             switch (choice) {
@@ -86,7 +92,13 @@ public class CoachUI {
                     "\n'1' Top 5 Junior svømmere \n'2' Top 5 Senior svømmere" +
                     "\n'9'" + RED_TEXT + " Tilbage til valg af disciplin" + RESET_TEXT);
 
-            choice = sc.nextInt();
+            try {
+                choice = Integer.parseInt(sc.next());
+            } catch (NumberFormatException e) {
+                System.out.println("Indtast et nummer mellem 1-2 eller 9");
+                choice = -1;
+            }
+
 
             switch (choice) {
                 case 1:
@@ -114,8 +126,18 @@ public class CoachUI {
         SwimmerUtils.displayTop5Swimmers(filteredSwimmers, disciplin, category);
 
         //  gem eller print ui
-        System.out.println("'1' Gem liste \n'2' Print liste");
-        int choice = sc.nextInt();
+        int choice;
+
+        do {
+            System.out.println("'1' Gem liste \n'2' Print liste");
+            try {
+                choice = Integer.parseInt(sc.next());
+            } catch (NumberFormatException e) {
+                System.out.println("Indtast et nummer mellem 1-2 eller 9");
+                choice = -1;
+            }
+        } while (choice < 1 || choice > 3 && choice != 9);
+
 
         if(choice == 1) {
             FileManager.saveTopList(filteredSwimmers, category);

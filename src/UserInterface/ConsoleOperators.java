@@ -22,7 +22,7 @@ public class ConsoleOperators {
     }
 
     public static boolean pressAnythingToContinue() {
-     System.out.println("Press anything to continue, " + RED_ITALIC_TEXT + "'9' to go back" + RESET_TEXT + ".");
+     System.out.println("Tryk på en tast for at fortsætte, " + RED_ITALIC_TEXT + "'9' to go back" + RESET_TEXT + ".");
      String input = scanner.nextLine();
 
      clearConsole();

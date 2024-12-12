@@ -64,7 +64,7 @@ public class ManagementUI {
         int age;
 
         do {
-            System.out.println("Enter member age");
+            System.out.println("Indtast en alder mellem 1-99");
             try {
                 age = Integer.parseInt(scanner.next());
             } catch (Exception e) {
@@ -87,19 +87,7 @@ public class ManagementUI {
         }
 
 
-        System.out.println("Er svømmeren konkurrencedygtig? \nTryk 'Y' for ja");
-        String userCompetitive = scanner.next();
         ConsoleOperators.printSeperator(30);
-
-        if(userCompetitive.equalsIgnoreCase("Y")) {
-            isCompetitive = true;
-        } else {
-            isCompetitive = false;
-        }
-
-//        System.out.println("Add user disciplin");
-//        String disciplin = scanner.next();
-
         System.out.println("Har medlemmet betalt kontingent? Tryk 'Y' for ja");
 
         String payed = scanner.next();
@@ -111,6 +99,7 @@ public class ManagementUI {
         }
 
         ConsoleOperators.printSeperator(30);
+
         System.out.println("Er svømmer konkurrencedygtig:" + "\nTryk 'Y' for ja");
         String userSwimmer = scanner.next();
 
