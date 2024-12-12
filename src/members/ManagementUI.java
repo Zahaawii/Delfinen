@@ -53,10 +53,10 @@ public class ManagementUI {
         String lastname = scanner.next();
         ConsoleOperators.printSeperator(30);
 
-        System.out.println("Enter member age");
         int age;
 
         do {
+            System.out.println("Enter member age");
             try {
                 age = Integer.parseInt(scanner.next());
             } catch (Exception e) {
