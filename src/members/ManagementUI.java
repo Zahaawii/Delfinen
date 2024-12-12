@@ -111,11 +111,20 @@ public class ManagementUI {
         }
 
         ConsoleOperators.printSeperator(30);
+        System.out.println("Er svømmer konkurrencedygtig:" + "\nTryk 'Y' for ja");
+        String userSwimmer = scanner.next();
 
-        System.out.println("Medlem oprettet: " + m1.toString());
 
+        if(userSwimmer.equalsIgnoreCase("Y")) {
+            isCompetitive = true;
+            System.out.println("Indtast svømmerens disciplin");
+            String discipline = scanner.next();
+            double time = 0;
+            isCompetitionSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
 
-
+        } else {
+            isSwimmer(name, lastname, age, isActive, quotaPayed);
+        }
     }
 
     //Delete an instantiated member
