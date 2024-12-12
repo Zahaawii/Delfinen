@@ -9,12 +9,8 @@ import java.util.stream.Collectors;
 
 public class SwimmerUtils {
 
-    /**
-     * Filtrér medlemmer udfra competition + disciplin + age
-     * siden sortér efter getTime()
-     * limit til 5 pax
-     *collect de oplysninger og sender toList()
-     */
+
+    //Filtrér medlemmer udfra competition + disciplin + age
     public static List<Members> filterAndSortSwimmers(List<Members> members, String discipline, String category) {
         return members.stream()
                 .filter(member -> {
@@ -24,9 +20,9 @@ public class SwimmerUtils {
                     }
                     return false;
                 })
-                .sorted((m1, m2) -> Double.compare(((CompetitionSwimmer) m1).getTime(), ((CompetitionSwimmer) m2).getTime()))
-                .limit(5)
-                .collect(Collectors.toList());
+                .sorted((m1, m2) -> Double.compare(((CompetitionSwimmer) m1).getTime(), ((CompetitionSwimmer) m2).getTime())) //sorter efter getTime()
+                .limit(5) //limit til 5pax
+                .collect(Collectors.toList()); //collecter oplysninger og sender toList()
     }
 
     //viser top 5 svømmere + disciplin + kategori
