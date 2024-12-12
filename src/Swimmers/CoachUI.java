@@ -15,7 +15,7 @@ public class CoachUI {
     private static final Scanner sc = new Scanner(System.in);
     private static final String RED_TEXT = "\u001B[31m"; //ANSI escape kode
     private static final String RESET_TEXT = "\u001B[0m";
-    private static final String ITALIC_TEXT = "\033[3m";
+    private static final String RED_ITALIC_TEXT = "\u001B[31m" + "\033[3m";
 
 
     // Constructor
@@ -36,7 +36,7 @@ public class CoachUI {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("------------------------------" + "\n\tTræner Menu");
+            System.out.println("------------------------------" + "\n\t\tTræner Menu");
 
             ConsoleOperators.displayInfo("\tVælg disciplin:\n" +
                     "\n'1' Butterfly \n'2' Crawl \n'3' Rygcrawl \n'4' Brystsvømning" +
@@ -103,12 +103,12 @@ public class CoachUI {
             switch (choice) {
                 case 1:
                     System.out.println("Junior");
-                    ConsoleOperators.pressAnythingToContinue();
+                    if (!ConsoleOperators.pressAnythingToContinue()) break;
                     handleTop5Swimmers(disciplin, "Junior");
                     break;
                 case 2:
                     System.out.println("Senior");
-                    ConsoleOperators.pressAnythingToContinue();
+                    if (!ConsoleOperators.pressAnythingToContinue()) break;
                     handleTop5Swimmers(disciplin, "Senior");
                     break;
                 case 9:
@@ -141,7 +141,7 @@ public class CoachUI {
 
         if(choice == 1) {
             FileManager.saveTopList(filteredSwimmers, category);
-            System.out.println("Listen er blevet gemt i " + ITALIC_TEXT + "root" + RESET_TEXT + " under:" + " Top5" + category + ".txt");
+            System.out.println("Listen er gemt som" + RED_ITALIC_TEXT + " Top5" + category + ".txt" + RESET_TEXT);
         } else if(choice == 2) {
             FileManager.printTopList();
         } else {

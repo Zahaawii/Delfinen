@@ -30,7 +30,7 @@ public class CashierUI {
 
         boolean exit = false;
         while (!exit) {
-            ConsoleOperators.displayInfo("Welcome to the Cashier menu");
+            ConsoleOperators.displayInfo("\t\tKasser Menu");
 
             System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
                     "Tast 2 for at se medlemmer i restance \n" +
@@ -48,7 +48,6 @@ public class CashierUI {
                CalculateQuota.printQuotaList();
                 FileManager.saveQuota();
                 System.out.println("Filen er gemt som Quota.txt");
-                ConsoleOperators.printSeperator(30);
             }
 
             else if (userInput == 2){
@@ -60,7 +59,6 @@ public class CashierUI {
                 CalculateQuota.printRestanceList();
                 FileManager.saveRestance();
                 System.out.println("Filen er gemt som Restance.txt");
-                ConsoleOperators.printSeperator(30);
             } else if (userInput == 9) {
                 exit = true; //go back to UserMenu
             }

@@ -70,7 +70,7 @@ public class UserMenu {
 
     //Method to display the menu in a readable way.
     private static void showcaseMenu() {
-        System.out.println("Hovedmenu, tryk:");
+        System.out.println("Hovedmenu, tast:");
         ConsoleOperators.displayInfo("'1' for Ledelse  " +
                 "\n'2' for Kassér" +
                 "\n'3' for Træner");

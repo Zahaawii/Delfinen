@@ -17,7 +17,7 @@ public class ManagementUI {
     public static void managementUI() {
         boolean exit = false;
         while (!exit) {
-            ConsoleOperators.displayInfo("Ledelse Menu");
+            ConsoleOperators.displayInfo("\t\tLedelse Menu");
 
             System.out.println("Tryk '1' for at oprette et medlem \nTryk '2' for at se alle medlemmer \nTryk '3' for at slette et medlem \nTryk '9' for at \033[31mgå tilbage til hovedmenu\033[0m");
             ConsoleOperators.printSeperator(30);
@@ -60,7 +60,6 @@ public class ManagementUI {
         ConsoleOperators.printSeperator(30);
 
 
-        System.out.println("indtast alder");
         int age;
 
         do {
@@ -78,7 +77,6 @@ public class ManagementUI {
 
         System.out.println("Er brugeren aktiv? \nTryk 'Y' for ja");
         String userActive = scanner.next();
-        ConsoleOperators.printSeperator(30);
 
         if(userActive.equalsIgnoreCase("Y")) {
             isActive = true;
