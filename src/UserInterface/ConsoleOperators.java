@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class ConsoleOperators {
 
     static Scanner scanner = new Scanner(System.in);
+    private static final String RED_ITALIC_TEXT = "\u001B[31m" + "\033[3m"; //ANSI escape kode
+    private static final String RESET_TEXT = "\u001B[0m";
 
     //Method to display a seperator from previous command to display a readable UI
     public static void printSeperator(int n) {
@@ -19,11 +21,12 @@ public class ConsoleOperators {
         printSeperator(30);
     }
 
-    //Method to make the user interact with the system before next step.
-    public static void pressAnythingToContinue() {
-     System.out.println("Press anything to continue");
-     scanner.nextLine();
+    public static boolean pressAnythingToContinue() {
+     System.out.println("Press anything to continue, " + RED_ITALIC_TEXT + "'9' to go back" + RESET_TEXT + ".");
+     String input = scanner.nextLine();
+
      clearConsole();
+     return !input.equals("9"); //kør ovenover hvis ikke '9'
     }
 
     //Method to remove all previous steps to make the UI readable.

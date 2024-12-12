@@ -1,6 +1,5 @@
 package Files;
 import Quota.CalculateQuota;
-import UserInterface.ConsoleOperators;
 import members.CompetitionSwimmer;
 import members.Members;
 import members.MembersList;
@@ -15,7 +14,6 @@ public class FileManager {
         try {
             BufferedWriter pw = new BufferedWriter(new FileWriter("Members.txt", true));
             for(Members m1 : MembersList.getMemberList()) {
-            pw.write(String.valueOf(m1));
 
             pw.newLine();
             }
@@ -24,32 +22,6 @@ public class FileManager {
             e.printStackTrace();
         }
     }
-
-    /**
-     *
-     * AI kode til at gemme Top liste til træner
-     * går den igennem og laver om efter weekend!
-     *
-     */
-    public static void saveTopList(List<Members> top5Swimmers, String category) {
-        String fileName = "Top5" + category + ".txt";
-        try (FileWriter writer = new FileWriter(fileName)) {
-            for (Members swimmer : top5Swimmers) {
-                if (swimmer instanceof CompetitionSwimmer) {
-                    writer.write(swimmer.getName() + " " + swimmer.getLastname() + " - " + ((CompetitionSwimmer) swimmer).getTime() + "\n");
-                }
-            }
-            System.out.println("Listen er gemt i " + fileName);
-        } catch (IOException e) {
-            System.out.println("Der opstod en fejl under gemning af listen: " + e.getMessage());
-        }
-    }
-
-    /**
-     * AI Slutter her *
-     */
-
-    //Method to save all quotas to a text file named quota.txt
     public static void saveQuota() {
         try {
             BufferedWriter pw = new BufferedWriter(new FileWriter("Quota.txt", true));
@@ -81,7 +53,24 @@ public class FileManager {
         }
 
     }
+
+    //gem top 5 svømmere
+    public static void saveTopList(List<Members> top5Swimmers, String category) {
+        String fileName = "Top5" + category + ".txt";
+        try (PrintWriter pw = new PrintWriter(new FileWriter(fileName), true)) {
+            pw.println(SwimmerUtils.printTopList(top5Swimmers));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //print-ud top 5 svømmere
+    public static void printTopList() {
+        //god logik til at sende til local-printer
+        System.out.println("Listen er blevet printet ud.");
+    }
 }
+
 
 
 

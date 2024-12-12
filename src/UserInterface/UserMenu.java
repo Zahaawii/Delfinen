@@ -2,7 +2,6 @@ package UserInterface;
 import Quota.CashierUI;
 import members.ManagementUI;
 import Swimmers.CoachUI;
-import members.MembersList;
 
 import java.util.Scanner;
 
@@ -12,8 +11,8 @@ public class UserMenu {
 
     //Method to combine all methods and start the program in an endless loop
     public static void ui() {
-    systemDisplayText();
-    while(true) { userUI(); }
+        systemDisplayText();
+        while(true) { userUI(); }
     }
 
     //Method to make the user go to a menu which suits their position.
@@ -22,27 +21,33 @@ public class UserMenu {
         int userInput = userChoice();
 
         if(userInput == 1) {
-            System.out.println("You choose management");
-            ConsoleOperators.pressAnythingToContinue();
+            System.out.println("Ledelse...");
+            if (!ConsoleOperators.pressAnythingToContinue()) {
+                return;
+            }
             ManagementUI.managementUI();
         }
 
-        if(userInput == 2) {
-            System.out.println("Kontingenter");
-            ConsoleOperators.pressAnythingToContinue();
+        else if(userInput == 2) {
+            System.out.println("Kontingenter...");
+            if (!ConsoleOperators.pressAnythingToContinue()) {
+                return;
+            }
             CashierUI.cashierUI();
         }
 
-        if(userInput == 3) {
-            System.out.println("Svømmere");
-            ConsoleOperators.pressAnythingToContinue();
+        else if(userInput == 3) {
+            System.out.println("Svømmere...");
+            if (!ConsoleOperators.pressAnythingToContinue()) {
+                return;
+            }
             CoachUI.coachUI();
         }
     }
 
     //Method to display the system menu.
     private static void systemDisplayText() {
-        ConsoleOperators.displayInfo("Welcome to the Dolphin");
+        ConsoleOperators.displayInfo("Velkommen til Delfinen!");
     }
 
     //Error handling method to make user only enter a number between 1 and 3 to continue
@@ -50,13 +55,14 @@ public class UserMenu {
         int userChoice;
 
         do{
-            System.out.println("Enter a number between 1-3");
-          try {
-             userChoice = Integer.parseInt(scanner.nextLine());
-          }   catch (Exception e) {
-              System.out.println("You have to enter a number between 1-3");
-              userChoice = -1;
-          }
+
+            try {
+                userChoice = Integer.parseInt(scanner.nextLine());
+            }   catch (Exception e) {
+                System.out.println("Du skal indtaste et tal mellem 1-3");
+                userChoice = 0;
+            }
+
         } while (userChoice < 1 || userChoice > 3);
 
         return userChoice;
@@ -64,10 +70,11 @@ public class UserMenu {
 
     //Method to display the menu in a readable way.
     private static void showcaseMenu() {
-        System.out.println("Dolphin menu");
-        ConsoleOperators.displayInfo("Press 1 if you're Management " +
-                "\nPress 2 if you're Cashier" +
-                "\nPress 3 if you're Coach");
+        System.out.println("Hovedmenu, tryk:");
+        ConsoleOperators.displayInfo("'1' for Ledelse  " +
+                "\n'2' for Kassér" +
+                "\n'3' for Træner");
+
 
     }
 }

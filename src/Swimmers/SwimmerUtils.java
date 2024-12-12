@@ -3,14 +3,18 @@ package Swimmers;
 import members.CompetitionSwimmer;
 import members.Members;
 
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SwimmerUtils {
 
-    
+    /**
+     * Filtrér medlemmer udfra competition + disciplin + age
+     * siden sortér efter getTime()
+     * limit til 5 pax
+     *collect de oplysninger og sender toList()
+     */
     public static List<Members> filterAndSortSwimmers(List<Members> members, String discipline, String category) {
         return members.stream()
                 .filter(member -> {
@@ -25,6 +29,7 @@ public class SwimmerUtils {
                 .collect(Collectors.toList());
     }
 
+    //viser top 5 svømmere + disciplin + kategori
     public static void displayTop5Swimmers(List<Members> filteredSwimmers, String discipline, String category) {
         System.out.println("Top 5 " + category + " svømmere i " + discipline + ":");
         for (int i = 0; i < filteredSwimmers.size(); i++) {
@@ -32,19 +37,12 @@ public class SwimmerUtils {
         }
     }
 
-    public static void saveTopList(List<Members> top5Swimmers, String category) {
-        String fileName = "Top5" + category + ".txt";
-        try (FileWriter writer = new FileWriter(fileName)) {
-            for (Members swimmer : top5Swimmers) {
-                writer.write(swimmer.getName() + " " + swimmer.getLastname() + " - " + ((CompetitionSwimmer) swimmer).getTime() + "\n");
-            }
-            System.out.println("Listen er gemt i " + fileName);
-        } catch (IOException e) {
-            System.out.println("Der opstod en fejl under gemning af listen: " + e.getMessage());
+    //printer top 5 svømmere + deres tider
+    public static List<Members> printTopList(List<Members> top5Swimmers) {
+        for (Members swimmer : top5Swimmers) {
+            System.out.println(swimmer.getName() + " " + swimmer.getLastname() + " - " + ((CompetitionSwimmer) swimmer).getTime());
         }
+        return top5Swimmers;
     }
 
-    public static void printTopList() {
-        System.out.println("Listen er blevet printet ud.");
-    }
 }

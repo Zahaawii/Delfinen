@@ -1,12 +1,4 @@
-ID: 1 Name: Zahaa Lastname: Alkhakani Age: 25
-Active status: true
-Quota payed: true 
-Discipline: Bryst
-ID: 2 Name: Long Lastname: Nguyen Age: 22
-Active status: true
-Quota payed: true
-ID: 3 Name: Daniel Lastname: Søgaard Age: 20
-Active status: true
+
 Quota payed: false
 ID: 1 Name: za Lastname: k Age: 25
 Active status: true

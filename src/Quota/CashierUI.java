@@ -16,39 +16,48 @@ public class CashierUI {
             try {
                 userInput = Integer.parseInt(scanner.next());
             } catch (Exception e) {
-                System.out.println("You have to enter a number between 1-2");
-                userInput = -1;
+
+                System.out.println("Tast mellem 1-3 eller 9");
+                userInput = 0;
             }
-        } while (userInput <= 0|| userInput > 3);
+        } while (userInput < 1  || userInput > 3 && userInput != 9);
+
         return userInput;
     }
 
     // A user interface to display what options the cashier has
     public static void cashierUI(){
-        ConsoleOperators.displayInfo("Welcome to the Cashier menu");
 
-        System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
-                "Tast 2 for at se medlemmer i restance");
-        ConsoleOperators.printSeperator(30);
+        boolean exit = false;
+        while (!exit) {
+            ConsoleOperators.displayInfo("Welcome to the Cashier menu");
 
-        int userInput = cashierInput();
-
-        if (userInput == 1){
-            System.out.println("Se kontingent");
-            ConsoleOperators.pressAnythingToContinue();
-            CalculateQuota.printQuotaList();
-            FileManager.saveQuota();
-            System.out.println("Filen er gemt som Quota.txt");
+            System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
+                    "Tast 2 for at se medlemmer i restance \n" +
+                    "Tast 9 for at \033[31mgå tilbage til hovedmenu\033[0m");
             ConsoleOperators.printSeperator(30);
-        }
 
-        if (userInput == 2){
-            System.out.println("Se restance");
-            ConsoleOperators.pressAnythingToContinue();
-            CalculateQuota.printRestanceList();
-            FileManager.saveRestance();
-            System.out.println("Filen er gemt som Restance.txt");
-            ConsoleOperators.printSeperator(30);
+            int userInput = cashierInput();
+
+            if (userInput == 1){
+                System.out.println("Se kontingent");
+               if (!ConsoleOperators.pressAnythingToContinue()) {
+                   continue;
+               }
+                FileManager.saveQuota();
+                System.out.println("Filen er gemt som Quota.txt");
+            }
+
+            else if (userInput == 2){
+                System.out.println("Se restance");
+                if (!ConsoleOperators.pressAnythingToContinue()) {
+                    continue;
+                }
+                FileManager.saveRestance();
+                System.out.println("Filen er gemt som Restance.txt");
+            } else if (userInput == 9) {
+                exit = true; //go back to UserMenu
+            }
         }
     }
 }
