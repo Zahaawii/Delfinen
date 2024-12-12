@@ -14,34 +14,35 @@ public class ManagementUI {
 
     //User interface for the management to create, see or delete a member
     public static void managementUI() {
-        while (true) {
-            ConsoleOperators.displayInfo("Welcome to the Management menu");
+        boolean exit = false;
+        while (!exit) {
+            ConsoleOperators.displayInfo("Ledelse Menu");
 
-            System.out.println("Press 1 to create a member \nPress 2 to see all members \nPress 3 to delete all members \nPress 9 to \033[31mgo back to main menu\033[0m");
+            System.out.println("Tryk '1' for at oprette et medlem \nTryk '2' for at se alle medlemmer \nTryk '3' for at slette et medlem \nTryk '9' for at \033[31mgå tilbage til hovedmenu\033[0m");
             ConsoleOperators.printSeperator(30);
 
             int userInput = managementInput();
 
             if (userInput == 1) {
-                System.out.println("Create a member");
+                System.out.println("Oprette medlem...");
                 if (!ConsoleOperators.pressAnythingToContinue()) {
                     continue;
                 }
                 createMember();
             } else if (userInput == 2) {
-                System.out.println("See all members");
+                System.out.println("Se alle medlemmer...");
                 if (!ConsoleOperators.pressAnythingToContinue()) {
                     continue;
                 }
                 seeAllMember();
             } else if (userInput == 3) {
-                System.out.println("Delete a member");
+                System.out.println("Slet en medlem...");
                 if (!ConsoleOperators.pressAnythingToContinue()) {
                     continue;
                 }
                 deleteMember();
             } else if (userInput == 9) {
-                return; // Go back to UserMenu
+                exit = true; // Go back to UserMenu
             }
         }
     }
@@ -50,28 +51,28 @@ public class ManagementUI {
     private static void createMember() {
 
         ConsoleOperators.printSeperator(30);
-        System.out.println("Enter member name");
+        System.out.println("Indtast fornavn");
         String name = scanner.next();
         ConsoleOperators.printSeperator(30);
 
-        System.out.println("Enter member last name");
+        System.out.println("Indtast efternavn");
         String lastname = scanner.next();
         ConsoleOperators.printSeperator(30);
 
-        System.out.println("Enter member age");
+        System.out.println("indtast alder");
         int age;
 
         do {
             try {
                 age = Integer.parseInt(scanner.next());
             } catch (Exception e) {
-                System.out.println("Wrong input, enter a age between 0-99");
+                System.out.println("Forket input! indtast en alder mellem 0-99");
                 age = 0;
             }
-        } while (age > 0);
+        } while (age <= 0 || age > 99);
         ConsoleOperators.printSeperator(30);
 
-        System.out.println("Is the user active? \nPress 'Y' for yes");
+        System.out.println("Er brugeren aktiv? \nTryk 'Y' for ja");
         String userActive = scanner.next();
         ConsoleOperators.printSeperator(30);
 
@@ -81,7 +82,7 @@ public class ManagementUI {
             isActive = false;
         }
 
-        System.out.println("Is the swimmer competitve? \nPress 'Y' for yes");
+        System.out.println("Er svømmeren konkurrencedygtig? \nTryk 'Y' for ja");
         String userCompetitive = scanner.next();
         ConsoleOperators.printSeperator(30);
 
@@ -94,7 +95,7 @@ public class ManagementUI {
 //        System.out.println("Add user disciplin");
 //        String disciplin = scanner.next();
 
-        System.out.println("Has the user payed quota? Press 'Y' for yes");
+        System.out.println("Har medlemmet betalt kontingent? Tryk 'Y' for ja");
         String payed = scanner.next();
         ConsoleOperators.printSeperator(30);
 
@@ -104,7 +105,7 @@ public class ManagementUI {
 
         Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);
         ConsoleOperators.printSeperator(30);
-        System.out.println("Member created: " + m1.toString());
+        System.out.println("Medlem oprettet: " + m1.toString());
 
         FileManager.fileOperations();
 
@@ -112,27 +113,27 @@ public class ManagementUI {
 
     //Delete an instantiated member
     private static void deleteMember() {
-        System.out.println("To delete a member, enter their ID");
+        System.out.println("For at slette et medlem, indtast deres ID");
         int userDelete = scanner.nextInt();
 
         ConsoleOperators.printSeperator(30);
         if(MembersList.getMemberID(userDelete) != null) {
 
-            System.out.println("You want to delete: " + MembersList.getMemberID(userDelete));
+            System.out.println("Du vil slette: " + MembersList.getMemberID(userDelete));
             ConsoleOperators.printSeperator(30);
 
-            System.out.println("Press 'Y' to delete member");
+            System.out.println("Tryk 'Y' for at slette medlem");
             String deleteMemberChoice = scanner.next();
 
             if(deleteMemberChoice.equalsIgnoreCase("Y")) {
                 MembersList.removeMember(userDelete);
-                System.out.println("User deleted");
+                System.out.println("Medlem deleted");
             } else {
-                System.out.println("Member not deleted");
+                System.out.println("Medlem ikke slettet");
             }
 
         } else {
-            System.out.println("Member does not exist");
+            System.out.println("Medlem eksisterer ikke");
         }
 
         FileManager.fileOperations();
@@ -152,10 +153,10 @@ public class ManagementUI {
             try {
                 userInput = Integer.parseInt(scanner.next());
             } catch (Exception e) {
-                System.out.println("Tast mellem 1-3");
+                System.out.println("Tast mellem 1-3 eller 9");
                 userInput = 0;
             }
-        } while (userInput < 0  || userInput > 3 && userInput != 9);
+        } while (userInput < 1  || userInput > 3 && userInput != 9);
         return userInput;
     }
 

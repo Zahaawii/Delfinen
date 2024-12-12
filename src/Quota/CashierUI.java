@@ -15,7 +15,7 @@ public class CashierUI {
             try {
                 userInput = Integer.parseInt(scanner.next());
             } catch (Exception e) {
-                System.out.println("Tast mellem 1-3");
+                System.out.println("Tast mellem 1-3 eller 9");
                 userInput = 0;
             }
         } while (userInput < 1  || userInput > 3 && userInput != 9);
@@ -51,7 +51,7 @@ public class CashierUI {
                 FileManager.saveRestance();
                 System.out.println("Filen er gemt som Restance.txt");
             } else if (userInput == 9) {
-                exit = true; //go back to Usermenu
+                exit = true; //go back to UserMenu
             }
         }
     }
