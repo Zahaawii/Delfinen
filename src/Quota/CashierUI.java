@@ -8,21 +8,26 @@ import java.util.Scanner;
 public class CashierUI {
     static Scanner scanner = new Scanner(System.in);
 
-    //Metode der tager input
+    //Error handling that makes the cashier only enter between 1 or 2 to go further.
     private static int cashierInput(){
         int userInput;
         do{
+            System.out.println("Enter a number between 1-2");
             try {
                 userInput = Integer.parseInt(scanner.next());
             } catch (Exception e) {
+
                 System.out.println("Tast mellem 1-3 eller 9");
                 userInput = 0;
             }
         } while (userInput < 1  || userInput > 3 && userInput != 9);
+
         return userInput;
     }
 
+    // A user interface to display what options the cashier has
     public static void cashierUI(){
+
         boolean exit = false;
         while (!exit) {
             ConsoleOperators.displayInfo("Welcome to the Cashier menu");

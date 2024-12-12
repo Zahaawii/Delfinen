@@ -2,6 +2,7 @@ package members;
 import Files.FileManager;
 import UserInterface.ConsoleOperators;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class ManagementUI {
@@ -49,7 +50,6 @@ public class ManagementUI {
 
     //Instantiate a new member
     private static void createMember() {
-
         ConsoleOperators.printSeperator(30);
         System.out.println("Indtast fornavn");
         String name = scanner.next();
@@ -59,17 +59,21 @@ public class ManagementUI {
         String lastname = scanner.next();
         ConsoleOperators.printSeperator(30);
 
+
         System.out.println("indtast alder");
         int age;
 
         do {
+            System.out.println("Enter member age");
             try {
                 age = Integer.parseInt(scanner.next());
             } catch (Exception e) {
+
                 System.out.println("Forket input! indtast en alder mellem 0-99");
                 age = 0;
             }
         } while (age <= 0 || age > 99);
+
         ConsoleOperators.printSeperator(30);
 
         System.out.println("Er brugeren aktiv? \nTryk 'Y' for ja");
@@ -81,6 +85,7 @@ public class ManagementUI {
         } else {
             isActive = false;
         }
+
 
         System.out.println("Er svømmeren konkurrencedygtig? \nTryk 'Y' for ja");
         String userCompetitive = scanner.next();
@@ -96,18 +101,20 @@ public class ManagementUI {
 //        String disciplin = scanner.next();
 
         System.out.println("Har medlemmet betalt kontingent? Tryk 'Y' for ja");
+
         String payed = scanner.next();
-        ConsoleOperators.printSeperator(30);
 
         if(payed.equalsIgnoreCase("Y")) {
             quotaPayed = true;
+        } else {
+            quotaPayed = false;
         }
 
-        Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);
         ConsoleOperators.printSeperator(30);
+
         System.out.println("Medlem oprettet: " + m1.toString());
 
-        FileManager.fileOperations();
+
 
     }
 
@@ -127,7 +134,9 @@ public class ManagementUI {
 
             if(deleteMemberChoice.equalsIgnoreCase("Y")) {
                 MembersList.removeMember(userDelete);
+
                 System.out.println("Medlem deleted");
+
             } else {
                 System.out.println("Medlem ikke slettet");
             }
@@ -156,8 +165,31 @@ public class ManagementUI {
                 System.out.println("Tast mellem 1-3 eller 9");
                 userInput = 0;
             }
+
         } while (userInput < 1  || userInput > 3 && userInput != 9);
+
         return userInput;
+    }
+
+    //Instantiate a competition swimmer
+    private static void isCompetitionSwimmer(String name, String lastname, int age, boolean isActive, boolean isCompetitive, boolean quotaPayed, String discipline, double time) {
+
+        CompetitionSwimmer c1 = new CompetitionSwimmer(id++, name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
+        ConsoleOperators.printSeperator(30);
+        System.out.println("Member created: " + c1.toString());
+
+        FileManager.fileOperations();
+    }
+
+    //Instantiate a regular member
+    private static void isSwimmer(String name, String lastname, int age, boolean isActive, boolean quotaPayed) {
+
+        Members m1 = new Members(id++,name, lastname, age, isActive, quotaPayed);
+        ConsoleOperators.printSeperator(30);
+        System.out.println("Member created: " + m1.toString());
+
+        FileManager.fileOperations();
+
     }
 
 }

@@ -1,6 +1,5 @@
 package Files;
 import Quota.CalculateQuota;
-import Swimmers.SwimmerUtils;
 import members.CompetitionSwimmer;
 import members.Members;
 import members.MembersList;
@@ -10,30 +9,46 @@ import java.util.List;
 
 public class FileManager {
 
+    //Method to save all new users to a file members.txt
     public static void fileOperations(){
-        try (PrintWriter pw = new PrintWriter(new FileWriter("Members.txt"), true)){
-
+        try {
+            BufferedWriter pw = new BufferedWriter(new FileWriter("Members.txt", true));
             for(Members m1 : MembersList.getMemberList()) {
-                pw.println(m1);
+
+            pw.newLine();
             }
-
+            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     public static void saveQuota() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter("Quota.txt"), true)){
-            pw.println(CalculateQuota.printQuotaList());
+        try {
+            BufferedWriter pw = new BufferedWriter(new FileWriter("Quota.txt", true));
+            for(Members m1 : CalculateQuota.getQuotaList()) {
+                pw.write(m1.getName() + " " + m1.getLastname() + "\nKontingent " + m1.getQuota());
+
+            }
+            pw.newLine();
+            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    //Method to save all restance payments to a text file named restance.txt
     public static void saveRestance() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter("Restance.txt"), true)){
-            pw.println(CalculateQuota.printRestanceList());
-        } catch (IOException e) {
+        try {
+            BufferedWriter pw = new BufferedWriter(new FileWriter("Restance.txt", true));
+//            pw.write(String.valueOf(CalculateQuota.printRestanceList()));
+            for(Members m1 : CalculateQuota.getRestanceList()) {
+                pw.write("Mangler at betale " + m1.getQuota() + "kr.: " + m1);
+                pw.write(System.lineSeparator());
+            }
+            pw.newLine();
+            pw.close();
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 
