@@ -14,8 +14,9 @@ public class CoachUI {
     private MembersList membersList;
     private static final Scanner sc = new Scanner(System.in);
     private static final String RED_TEXT = "\u001B[31m"; //ANSI escape kode
-    private static final String RESET_TEXT = "\u001B[0m";
+    private static final String CYAN_BOLD_TEXT = "\u001B[36m\u001B[1m";
     private static final String RED_ITALIC_TEXT = "\u001B[31m" + "\033[3m";
+    private static final String RESET_TEXT = "\u001B[0m";
 
 
     // Constructor
@@ -36,7 +37,7 @@ public class CoachUI {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("------------------------------" + "\n\t\tTræner Menu");
+            System.out.println("------------------------------" + CYAN_BOLD_TEXT + "\n\t\tTræner Menu" + RESET_TEXT);
 
             ConsoleOperators.displayInfo("\tVælg disciplin:\n" +
                     "\n'1' Butterfly \n'2' Crawl \n'3' Rygcrawl \n'4' Brystsvømning" +

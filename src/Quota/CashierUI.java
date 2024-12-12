@@ -6,6 +6,9 @@ import UserInterface.ConsoleOperators;
 import java.util.Scanner;
 
 public class CashierUI {
+    private static final String CYAN_BOLD_TEXT = "\u001B[36m\u001B[1m"; //ANSI escape kode
+    private static final String RESET_TEXT = "\u001B[0m";
+
     static Scanner scanner = new Scanner(System.in);
 
     //Error handling that makes the cashier only enter between 1 or 2 to go further.
@@ -30,7 +33,7 @@ public class CashierUI {
 
         boolean exit = false;
         while (!exit) {
-            ConsoleOperators.displayInfo("\t\tKasser Menu");
+            ConsoleOperators.displayInfo(CYAN_BOLD_TEXT + "\t\tKasser Menu" + RESET_TEXT);
 
             System.out.println("Tast 1 for at se udregnet kontingent for alle medlemmer \n" +
                     "Tast 2 for at se medlemmer i restance \n" +

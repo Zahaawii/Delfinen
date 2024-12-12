@@ -15,7 +15,7 @@ public class SwimmerUtils {
         return members.stream()
                 .filter(member -> {
                     if (member instanceof CompetitionSwimmer) {
-                        return ((CompetitionSwimmer) member).getDiscipline().equals(discipline) &&
+                        return ((CompetitionSwimmer) member).getDiscipline().equalsIgnoreCase(discipline) &&
                                 (category.equals("Junior") ? member.getAge() < 18 : member.getAge() >= 18);
                     }
                     return false;
