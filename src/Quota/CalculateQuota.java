@@ -15,25 +15,25 @@ public class CalculateQuota {
         ArrayList<Members> calculatedQuotaList = MembersList.getMemberList();
 
         for (Members m : calculatedQuotaList){
-            if (!m.getIsActive()){ // tjekker passiv medlemmer
+            if (m.getAge() >= 60){
+                if (m.getIsActive()){
+                    // 1600 / 25%
+                    double price = seniorPrice - (seniorPrice*0.25);
+                    m.setQuota(price);
+                } else if (!m.getIsActive()){
+                    // 500 / 25%
+                    double price = passivePrice - (passivePrice*0.25);
+                    m.setQuota(price);
+                }
+            } else if (!m.getIsActive()){ // tjekker passiv medlemmer
                 //500 kr.
                 m.setQuota(passivePrice);
             } else if (m.getAge() < 18 && m.getIsActive()){ // tjekker junior aktiv medlemmer
                 //1000kr.
                 m.setQuota(juniorPrice);
-            } else if (m.getAge() >= 18 && m.getIsActive()){ // tjekker senior aktiv medlemmer
+            } else if (m.getAge() >= 18 && m.getIsActive() && m.getAge() < 60){ // tjekker senior aktiv medlemmer
                 //1600kr.
                 m.setQuota(seniorPrice);
-            } else if (m.getAge() < 60){
-                if (m.getIsActive()){
-                    // 1600 / 25%
-                    double price = seniorPrice - (seniorPrice*0.25);
-                    m.setQuota(price);
-                } else {
-                    // 500 / 25%
-                    double price = passivePrice - (passivePrice*0.25);
-                    m.setQuota(price);
-                }
             }
         }
         return calculatedQuotaList;
