@@ -6,9 +6,9 @@ import java.io.File;
 import java.util.Scanner;
 
 public class ManagementUI {
+
     private static final String CYAN_BOLD_TEXT = "\u001B[36m\u001B[1m"; //ANSI escape kode
     private static final String RESET_TEXT = "\u001B[0m";
-
     static Scanner scanner = new Scanner(System.in);
     static boolean isActive;
     static boolean isCompetitive;
@@ -53,60 +53,14 @@ public class ManagementUI {
 
     //Instantiate a new member
     private static void createMember() {
-        ConsoleOperators.printSeperator(30);
-        System.out.println("Indtast fornavn");
-        String name = scanner.next();
-        ConsoleOperators.printSeperator(30);
+        String name = getInput("Indtast fornavn");
+        String lastname = getInput("Indtast efternavn");
+        int age = getAge();
+        boolean isActive = getYesOrNo("Er brugeren aktiv? \nTryk 'Y' for ja");
+        boolean quotaPayed = getYesOrNo("Har medlemmer betalt kontingent? Tryk 'Y' for ja");
+        boolean isCompetitive = getYesOrNo("Er svømmer konkurrencedygtigt? Tryk 'Y' for ja");
 
-        System.out.println("Indtast efternavn");
-        String lastname = scanner.next();
-        ConsoleOperators.printSeperator(30);
-
-
-        int age;
-
-        do {
-            System.out.println("Indtast en alder mellem 1-99");
-            try {
-                age = Integer.parseInt(scanner.next());
-            } catch (Exception e) {
-
-                System.out.println("Forket input! indtast en alder mellem 0-99");
-                age = 0;
-            }
-        } while (age <= 0 || age > 99);
-
-        ConsoleOperators.printSeperator(30);
-
-        System.out.println("Er brugeren aktiv? \nTryk 'Y' for ja");
-        String userActive = scanner.next();
-
-        if(userActive.equalsIgnoreCase("Y")) {
-            isActive = true;
-        } else {
-            isActive = false;
-        }
-
-
-        ConsoleOperators.printSeperator(30);
-        System.out.println("Har medlemmet betalt kontingent? Tryk 'Y' for ja");
-
-        String payed = scanner.next();
-
-        if(payed.equalsIgnoreCase("Y")) {
-            quotaPayed = true;
-        } else {
-            quotaPayed = false;
-        }
-
-        ConsoleOperators.printSeperator(30);
-
-        System.out.println("Er svømmer konkurrencedygtig:" + "\nTryk 'Y' for ja");
-        String userSwimmer = scanner.next();
-        ConsoleOperators.printSeperator(30);
-
-        if(userSwimmer.equalsIgnoreCase("Y")) {
-            isCompetitive = true;
+        if(isCompetitive) {
             System.out.println("Indtast svømmerens disciplin: 'Butterfly' 'Crawl' 'Rygcrawl' 'Brystsvømning'");
             String discipline = scanner.next().toLowerCase();
             System.out.println("Indtast svømmerens bedste tid:");
@@ -189,6 +143,33 @@ public class ManagementUI {
 
         FileManager.fileOperations();
 
+    }
+
+    private static String getInput(String pormpt) {
+        ConsoleOperators.printSeperator(30);
+        System.out.println(pormpt);
+        return scanner.next();
+    }
+
+    private static int getAge() {
+        int age;
+        do {
+        System.out.println("Indtast en alder mellem 1-99");
+        try {
+            age = Integer.parseInt(scanner.next());
+        } catch (Exception e) {
+            System.out.println("Forkert input! Tast mellem 1-99");
+            age = 0;
+        }
+    } while (age <= 0 || age > 99);
+        return age;
+    }
+
+    private static boolean getYesOrNo(String prompt) {
+        ConsoleOperators.printSeperator(30);
+        System.out.println(prompt);
+        String input = scanner.next();
+        return input.equalsIgnoreCase("Y");
     }
 
 }
