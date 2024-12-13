@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class ConsoleOperators {
 
     static Scanner scanner = new Scanner(System.in);
-    private static final String RED_ITALIC_TEXT = "\u001B[31m" + "\033[3m"; //ANSI escape kode
+    private static final String RED_ITALIC_TEXT = "\u001B[31m\033[3m"; //ANSI escape kode
     private static final String RESET_TEXT = "\u001B[0m";
 
     //Method to display a seperator from previous command to display a readable UI
@@ -22,7 +22,7 @@ public class ConsoleOperators {
     }
 
     public static boolean pressAnythingToContinue() {
-     System.out.println("Tryk på en tast for at fortsætte, " + RED_ITALIC_TEXT + "'9' to go back" + RESET_TEXT + ".");
+     System.out.println("Tryk på en tast for at fortsætte, " + RED_ITALIC_TEXT + "'9' til at gå tilbage" + RESET_TEXT + ".");
      String input = scanner.nextLine();
 
      clearConsole();

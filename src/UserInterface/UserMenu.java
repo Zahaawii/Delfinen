@@ -6,6 +6,8 @@ import Swimmers.CoachUI;
 import java.util.Scanner;
 
 public class UserMenu {
+    private static final String CYAN_BOLD_TEXT = "\u001B[36m\u001B[1m"; //ANSI escape kode
+    private static final String RESET_TEXT = "\u001B[0m";
 
     static Scanner scanner = new Scanner(System.in);
 
@@ -70,7 +72,7 @@ public class UserMenu {
 
     //Method to display the menu in a readable way.
     private static void showcaseMenu() {
-        System.out.println("Hovedmenu, tast:");
+        System.out.println(CYAN_BOLD_TEXT + "\t\tHovedmenu" + RESET_TEXT);
         ConsoleOperators.displayInfo("'1' for Ledelse  " +
                 "\n'2' for Kassér" +
                 "\n'3' for Træner");

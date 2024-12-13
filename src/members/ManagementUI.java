@@ -6,6 +6,8 @@ import java.io.File;
 import java.util.Scanner;
 
 public class ManagementUI {
+    private static final String CYAN_BOLD_TEXT = "\u001B[36m\u001B[1m"; //ANSI escape kode
+    private static final String RESET_TEXT = "\u001B[0m";
 
     static Scanner scanner = new Scanner(System.in);
     static boolean isActive;
@@ -13,11 +15,12 @@ public class ManagementUI {
     static boolean quotaPayed;
     static int id = 1;
 
+
     //User interface for the management to create, see or delete a member
     public static void managementUI() {
         boolean exit = false;
         while (!exit) {
-            ConsoleOperators.displayInfo("\t\tLedelse Menu");
+            ConsoleOperators.displayInfo(CYAN_BOLD_TEXT + "\t\tLedelse Menu" + RESET_TEXT);
 
             System.out.println("Tryk '1' for at oprette et medlem \nTryk '2' for at se alle medlemmer \nTryk '3' for at slette et medlem \nTryk '9' for at \033[31mgå tilbage til hovedmenu\033[0m");
             ConsoleOperators.printSeperator(30);
@@ -100,15 +103,15 @@ public class ManagementUI {
 
         System.out.println("Er svømmer konkurrencedygtig:" + "\nTryk 'Y' for ja");
         String userSwimmer = scanner.next();
-
+        ConsoleOperators.printSeperator(30);
 
         if(userSwimmer.equalsIgnoreCase("Y")) {
             isCompetitive = true;
-            System.out.println("Indtast svømmerens disciplin");
-            String discipline = scanner.next();
-            double time = 0;
+            System.out.println("Indtast svømmerens disciplin: 'Butterfly' 'Crawl' 'Rygcrawl' 'Brystsvømning'");
+            String discipline = scanner.next().toLowerCase();
+            System.out.println("Indtast svømmerens bedste tid:");
+            double time = scanner.nextDouble();
             isCompetitionSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
-
         } else {
             isSwimmer(name, lastname, age, isActive, quotaPayed);
         }
