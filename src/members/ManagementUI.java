@@ -63,8 +63,7 @@ public class ManagementUI {
         if(isCompetitive) {
             System.out.println("Indtast svømmerens disciplin: 'Butterfly' 'Crawl' 'Rygcrawl' 'Brystsvømning'");
             String discipline = scanner.next().toLowerCase();
-            System.out.println("Indtast svømmerens bedste tid:");
-            double time = scanner.nextDouble();
+            double time = getTime();
             isCompetitionSwimmer(name, lastname, age, isActive, isCompetitive, quotaPayed, discipline, time);
         } else {
             isSwimmer(name, lastname, age, isActive, quotaPayed);
@@ -170,6 +169,22 @@ public class ManagementUI {
         System.out.println(prompt);
         String input = scanner.next();
         return input.equalsIgnoreCase("Y");
+    }
+
+    private static double getTime() {
+        double time;
+        do {
+           System.out.println("Indtast svømmerens bedste tid");
+
+           try {
+            time = Double.parseDouble(scanner.next());
+
+            } catch (NumberFormatException e) {
+               System.out.println("Forkert input! Tast en tid");
+               time = 0;
+           }
+        } while (time <= 0.00 || time > 99.00);
+        return time;
     }
 
 }
